@@ -1,6 +1,5 @@
 import React from "react";
 
-// Fixed AdminSidebar Component
 const AdminSidebar = ({
   activeTab,
   setActiveTab,
@@ -15,31 +14,56 @@ const AdminSidebar = ({
 
   return (
     <>
-      <button
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="lg:hidden fixed top-20 left-4 z-50 p-2 bg-pink-500 text-white rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-200"
-      >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+      {/* OPEN SIDEBAR BUTTON (MOBILE ONLY) */}
+      {!isSidebarOpen && (
+        <button
+          onClick={() => setIsSidebarOpen(true)}
+          className="lg:hidden fixed top-20 left-4 z-50 p-2 bg-pink-500 text-white rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-200"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </button>
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      )}
 
+      {/* SIDEBAR */}
       <div
         className={`${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 transition-transform duration-300 fixed lg:relative z-40 w-64 h-full bg-white/80 backdrop-blur-md shadow-xl border-r border-pink-200`}
       >
-        <div className="p-6">
+        <div className="p-6 relative">
+          {/* CLOSE BUTTON INSIDE SIDEBAR (MOBILE ONLY) */}
+          <button
+            onClick={() => setIsSidebarOpen(false)}
+            className="lg:hidden absolute top-4 right-4 text-gray-500 hover:text-red-500 transition"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          {/* HEADER */}
           <div className="flex items-center space-x-3 mb-8">
             <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-red-500 rounded-xl flex items-center justify-center">
               <svg
@@ -58,6 +82,7 @@ const AdminSidebar = ({
             </div>
           </div>
 
+          {/* NAVIGATION */}
           <nav className="space-y-2">
             {sidebarItems.map((item) => (
               <button
@@ -68,7 +93,7 @@ const AdminSidebar = ({
                 }}
                 className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-200 flex items-center space-x-3 ${
                   activeTab === item.id
-                    ? "bg-gradient-to-r from-pink-500 to-red-500 text-white shadow-lg transform scale-105"
+                    ? "bg-gradient-to-r from-pink-500 to-red-500 text-white shadow-lg scale-105"
                     : "text-gray-700 hover:bg-pink-100 hover:scale-105"
                 }`}
               >
@@ -78,6 +103,7 @@ const AdminSidebar = ({
             ))}
           </nav>
 
+          {/* QUICK STATS */}
           <div className="mt-8 p-4 bg-gradient-to-r from-pink-100 to-rose-100 rounded-xl border border-pink-200">
             <h4 className="text-sm font-semibold text-pink-800 mb-2">
               Quick Stats
@@ -96,6 +122,7 @@ const AdminSidebar = ({
         </div>
       </div>
 
+      {/* OVERLAY */}
       {isSidebarOpen && (
         <div
           className="lg:hidden fixed inset-0 bg-black/50 z-30"
