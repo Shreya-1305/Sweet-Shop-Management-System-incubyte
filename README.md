@@ -19,7 +19,7 @@ It includes:
 
 ## 📸 Working Video
 
-[[Watch the demo video]((https://youtu.be/URyRFRPyKxo)]
+[[Watch the demo video]((https://youtu.be/ZgzqM5yVlsE)]
 
 ## 📸 Screenshots
 
@@ -55,7 +55,7 @@ It includes:
 
 ## Deployed Project
 
-You can view the live project here: [Sweet Shop Management](https://sweet-shop-management-tdd-k9hz.vercel.app/)
+You can view the live project here: [Sweet Shop Management](https://sweet-shop-management-system-incuby-red.vercel.app/)
 
 ## Testing Credentials
 
