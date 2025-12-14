@@ -1,5 +1,8 @@
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+
+import { NotificationProvider } from "./context/NotificationContext";
 
 // Pages
 import LandingPage from "./pages/LandingPage";
@@ -35,7 +38,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <RouterProvider router={router} future={{ v7_startTransition: true }} />
+    <AuthProvider>
+      <NotificationProvider>
+        <RouterProvider router={router} future={{ v7_startTransition: true }} />
+      </NotificationProvider>
+    </AuthProvider>
   );
 }
 
