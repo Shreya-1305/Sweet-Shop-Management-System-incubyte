@@ -42,7 +42,6 @@ describe("PUT /api/sweets/:id - Update Sweet (Admin only)", () => {
     );
   });
 
-
   it("should return 400 if price or quantity is negative", async () => {
     jwt.verify.mockReturnValue(adminPayload);
 
@@ -73,6 +72,7 @@ describe("PUT /api/sweets/:id - Update Sweet (Admin only)", () => {
       expect(res.statusCode).toBe(400);
       expect(res.body).toHaveProperty("error");
     }
+  });
 
   it("should return 403 if user is not admin", async () => {
     jwt.verify.mockReturnValue(userPayload);
