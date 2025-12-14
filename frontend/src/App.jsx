@@ -1,8 +1,8 @@
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
-
 import { NotificationProvider } from "./context/NotificationContext";
+import { SweetProvider } from "./context/SweetContext";
 
 // Pages
 import LandingPage from "./pages/LandingPage";
@@ -40,7 +40,12 @@ function App() {
   return (
     <AuthProvider>
       <NotificationProvider>
-        <RouterProvider router={router} future={{ v7_startTransition: true }} />
+        <SweetProvider>
+          <RouterProvider
+            router={router}
+            future={{ v7_startTransition: true }}
+          />
+        </SweetProvider>
       </NotificationProvider>
     </AuthProvider>
   );
